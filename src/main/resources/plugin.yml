@@ -1,0 +1,3 @@
+name: TestPlugin
+version: 1.0.1
+main: top.rainhon.testplugin.TestPlugin

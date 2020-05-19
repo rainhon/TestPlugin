@@ -1,0 +1,6 @@
+#目标方块
+material:
+  BRICK
+#要执行的命令
+command:
+  say hello
