@@ -1,39 +1,33 @@
 package top.rainhon.testplugin.eventlistener;
 
-import org.bukkit.Material;
-import org.bukkit.Server;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.plugin.java.JavaPlugin;
+import top.rainhon.testplugin.TestPlugin;
+import top.rainhon.testplugin.util.Command;
 
 public class BlockBreakEventListener implements Listener{
 
-    private Material targetMaterial;
-    private String command;
-    private JavaPlugin plugin;
-    private Server server;
+    private TestPlugin plugin;
 
-    public BlockBreakEventListener(JavaPlugin plugin){
+    public BlockBreakEventListener(TestPlugin plugin){
         this.plugin = plugin;
-        this.targetMaterial = Material.getMaterial(plugin.getConfig().getString("material"));
-        this.command = plugin.getConfig().getString("command");
-        this.server = plugin.getServer();
     }
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        if(event.getBlock().getType() == this.targetMaterial){
+        if(event.getBlock().getType() == this.plugin.configMap.get("material")){
+            Player player = event.getPlayer();
             try{
-                if(! (event.getPlayer() instanceof Player)){
+                if(! (player instanceof Player)){
                     return;
                 }
-                this.server.dispatchCommand(event.getPlayer(), this.command);
-
+                Command.run(player, (String)this.plugin.configMap.get("command"));
             }catch(CommandException e) {
-                this.plugin.getLogger().info("执行命令出错:\n"+e.getLocalizedMessage());
+                Bukkit.getLogger().info("执行命令出错:\n"+e.getLocalizedMessage());
             }
         }
     }

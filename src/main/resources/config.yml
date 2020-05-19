@@ -1,6 +1,6 @@
 #目标方块
-material:
-  BRICK
+material: STONE
 #要执行的命令
-command:
-  say hello
+command: say hello
+#执行动作
+trigger: RIGHT_CLICK
