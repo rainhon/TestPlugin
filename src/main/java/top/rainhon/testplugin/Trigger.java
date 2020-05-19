@@ -5,7 +5,6 @@ import org.bukkit.event.Listener;
 import top.rainhon.testplugin.eventlistener.BlockBreakEventListener;
 import top.rainhon.testplugin.eventlistener.PlayerInteractListener;
 
-
 public enum Trigger {
     BREAK, RIGHT_CLICK, LEFT_CLICK;
     public static void registerTrigger(Trigger trigger, TestPlugin plugin){

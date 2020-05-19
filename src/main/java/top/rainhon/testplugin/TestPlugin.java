@@ -52,6 +52,6 @@ public class TestPlugin extends JavaPlugin{
 
         this.configMap.put("trigger", trigger);
         this.configMap.put("targetMaterial", targetMaterial);
-        this.configMap.put("command", this.getConfig().isString("command"));
+        this.configMap.put("command", this.getConfig().getString("command"));
     }
 }

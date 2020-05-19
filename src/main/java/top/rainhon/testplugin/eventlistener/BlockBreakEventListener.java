@@ -19,7 +19,7 @@ public class BlockBreakEventListener implements Listener{
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        if(event.getBlock().getType() == this.plugin.configMap.get("material")){
+        if(event.getBlock().getType() == this.plugin.configMap.get("targetMaterial")){
             Player player = event.getPlayer();
             try{
                 if(! (player instanceof Player)){
